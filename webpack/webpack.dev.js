@@ -1,25 +1,53 @@
 const webpack = require('webpack');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
   devtool: 'eval-cheap-source-map',
   output: {
-    path: path.resolve(__dirname, '../', 'dist'),
-    filename: '[name].[contenthash].bundle.js',
+    path: path.resolve(__dirname, '../', 'public'),
+    filename: 'js/[name].bundle-[contenthash].js',
+    chunkFilename: 'js/chunk-[name]-[contenthash].js',
     publicPath: '/',
   },
+  watchOptions: {
+    ignored: '/node_modules/',
+  },
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        components: {
+          name: 'components',
+          test: /[\\/]components[\\/]/,
+          chunks: 'all',
+        },
+        containers: {
+          name: 'containers',
+          test: /[\\/]containers[\\/]/,
+          chunks: 'all',
+        },
+      },
+    },
+    runtimeChunk: true,
+  },
+
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[name].[contenthash].css',
-    }),
-    new Dotenv({
-      path: './.env.development',
+      filename: 'css/[name]-[contenthash].css',
+      chunkFilename: 'css/chunk-[name]-[contenthash].css',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -30,9 +58,6 @@ module.exports = {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          // {
-          //   loader: 'style-loader',
-          // },
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
