@@ -57,11 +57,13 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
+        include: path.resolve(__dirname, '..', 'src'),
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
+              importLoaders: 1,
               modules: {
                 auto: resourcePath => resourcePath.endsWith('.module.css'),
                 localIdentName: '[name]__[local]___[hash:base64:5]',
@@ -69,14 +71,13 @@ module.exports = {
               sourceMap: true,
             },
           },
-          {
-            loader: 'postcss-loader',
-          },
+          'postcss-loader',
         ],
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
+
         use: [
           MiniCssExtractPlugin.loader,
           {

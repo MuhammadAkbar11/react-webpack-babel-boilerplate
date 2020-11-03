@@ -19,12 +19,14 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.12.1",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@babel/register": "^7.12.1",
     "autoprefixer": "9.6.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "babel-plugin-macros": "^2.8.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.0",
     "eslint": "^7.11.0",
@@ -66,6 +68,18 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "tailwindcss": "^1.9.2"
+    "styled-components": "^5.2.1",
+    "tailwindcss": "^1.9.2",
+    "twin.macro": "^1.12.0"
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "tailwind.config.js",
+      "preset": "styled-components",
+      "autoCssProp": true,
+      "debugProp": true,
+      "debugPlugins": false,
+      "debug": false
+    }
   }
 }

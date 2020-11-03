@@ -16,6 +16,9 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
   },
+  stats: {
+    colors: true,
+  },
   devServer: {
     contentBase: path.join(__dirname, '..', 'dist'),
     hot: true,
