@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import wallImg from '../../assets/img/wall.jpg';
 
 const App = styled.div`
   ${tw` h-screen flex flex-col justify-center items-center border  `};
 
+  background-image: url(${wallImg});
   line-height: 3rem;
 `;
 
