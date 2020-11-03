@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import wallImg from '../../assets/img/wall.jpg';
 
 const App = styled.div`
   ${tw` h-screen flex flex-col justify-center items-center border  `};
-
-  background-image: url(${wallImg});
   line-height: 3rem;
 `;
 
@@ -23,7 +20,7 @@ const Home = () => {
       <App>
         <AppTitle>Webpack, React and Babel Boilerplate</AppTitle>
         <AppSubtitle>
-          And Support {/* eslint-disable */}
+          Support {/* eslint-disable */}
           <a href='https://tailwindcss.com/' target='_blank' tw='text-teal-600'>
             TailwindCss{' '}
           </a>{' '}
