@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './containers/Home';
+
+import Home from '@app/containers/Home';
 
 const App = () => {
   /* eslint-disable */
