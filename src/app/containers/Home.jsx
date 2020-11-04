@@ -1,39 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
-import tw from 'twin.macro';
-import Title from '@components/Title';
-import SubTitle from '@components/SubTitle';
-
-const App = styled.div`
-  ${tw` h-screen flex flex-col justify-center items-center border  `};
-  line-height: 3rem;
-`;
+import styles from '../../styles/scss/app.module.scss';
+// import Title from '@components/Title';
+// import SubTitle from '@components/SubTitle';
 
 const Home = () => {
   return (
     <>
-      <App>
-        <Title>Webpack, React and Babel Boilerplate</Title>
-        <SubTitle tag='h5'>
+      <div className={styles.app}>
+        <h1 className={styles.appTitle}>
+          Webpack, React and Babel Boilerplate
+        </h1>
+        <h3 className={styles.subtitle}>
           Support {/* eslint-disable */}
-          <a
-            href='https://tailwindcss.com/'
-            target='_blank'
-            tw='text-teal-600 font-inconsolata  '
-          >
-            TailwindCss{' '}
-          </a>{' '}
-          and
-          <a
-            target='_blank'
-            href='https://styled-components.com/'
-            tw='text-yellow-600  font-inconsolata'
-          >
-            {' '}
-            Styled-Component
-          </a>
-        </SubTitle>
-      </App>
+          Css Modules and Scss
+        </h3>
+      </div>
     </>
   );
 };

@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const HOT = process.env.HOT;
 
@@ -53,6 +54,49 @@ module.exports = {
               fix: true,
             },
           },
+        ],
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, '..', 'src'),
+        use: [
+          process.env.NODE_ENV !== 'dev'
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                auto: resourcePath => resourcePath.endsWith('.module.css'),
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+              sourceMap: true,
+            },
+          },
+          'postcss-loader',
+        ],
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          process.env.NODE_ENV !== 'dev'
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: resourcePath => resourcePath.endsWith('.module.scss'),
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+              sourceMap: true,
+            },
+          },
+          'sass-loader',
+          'postcss-loader',
         ],
       },
       {

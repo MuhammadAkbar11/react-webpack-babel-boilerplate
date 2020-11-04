@@ -46,54 +46,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name]-[contenthash].css',
-      chunkFilename: 'css/chunk-[name]-[contenthash].css',
+      filename: '[name]-[contenthash].css',
+      chunkFilename: 'chunk-[name]-[contenthash].css',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
-
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        include: path.resolve(__dirname, '..', 'src'),
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: {
-                auto: resourcePath => resourcePath.endsWith('.module.css'),
-                localIdentName: '[name]__[local]___[hash:base64:5]',
-              },
-              sourceMap: true,
-            },
-          },
-          'postcss-loader',
-        ],
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                auto: resourcePath => resourcePath.endsWith('.module.scss'),
-                localIdentName: '[name]__[local]___[hash:base64:5]',
-              },
-              sourceMap: true,
-            },
-          },
-          'sass-loader',
-          'postcss-loader',
-        ],
-      },
-    ],
-  },
 };
