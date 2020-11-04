@@ -22,6 +22,7 @@ module.exports = {
       '@app': path.resolve(__dirname, '..', 'src/app'),
       '@containers': path.resolve(__dirname, '..', 'src/app/containers'),
       '@components': path.resolve(__dirname, '..', 'src/app/components'),
+      '~bootstrap': path.resolve(__dirname, '..', 'node_modules/bootstrap'),
     },
   },
   stats: {
