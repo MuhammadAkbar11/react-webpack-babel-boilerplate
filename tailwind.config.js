@@ -250,6 +250,8 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
+      poppins: ['"Poppins"', 'sans-serif'],
+      inconsolata: ["'Inconsolata'", 'monospace'],
       sans: [
         'system-ui',
         '-apple-system',
