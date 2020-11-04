@@ -14,7 +14,14 @@ module.exports = {
       : path.resolve(__dirname, '../', 'src/index.js'),
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
+    extensions: ['.css', '.js', '.jsx', '.json'],
+    alias: {
+      assets: path.resolve(__dirname, 'src/assets'),
+      '@': path.resolve(__dirname, '..', 'src'),
+      '@app': path.resolve(__dirname, '..', 'src/app'),
+      '@containers': path.resolve(__dirname, '..', 'src/app/containers'),
+      '@components': path.resolve(__dirname, '..', 'src/app/components'),
+    },
   },
   stats: {
     colors: true,
@@ -60,19 +67,12 @@ module.exports = {
       },
       {
         test: /\.(eot|gif|otf|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        use: ['url-loader?limit=100000'],
       },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'React, Webpack and Babel',
-    }),
     new HtmlWebpackPlugin({
       title: 'React, Webpack and Babel Boilerplate',
       template: path.resolve(__dirname, '..', 'src', 'index.html'),
