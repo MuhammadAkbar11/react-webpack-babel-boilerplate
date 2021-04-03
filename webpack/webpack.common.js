@@ -1,9 +1,14 @@
+require('dotenv').config();
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const HOT = process.env.HOT;
+let HOT = false;
+
+if (process.env.NODE_ENV === 'dev') {
+  HOT = true;
+}
 
 module.exports = {
   entry: {
