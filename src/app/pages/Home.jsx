@@ -14,6 +14,7 @@ const Home = () => {
           Support {/* eslint-disable */}
           Css Modules and Scss
         </h3>
+        <img src='./public/suzy.jpeg' alt='' />
       </div>
     </>
   );
