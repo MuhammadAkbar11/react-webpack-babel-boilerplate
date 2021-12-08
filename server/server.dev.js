@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 const app = express();
 
-const webpackConfig = require('../../webpack/webpack.config.js');
+const webpackConfig = require('../webpack/webpack.config.js');
 
 const configs = { env: process.env.NODE_ENV };
 const devConfig = webpackConfig(configs);
@@ -18,7 +18,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')(compiler);
 app.use(webpackDevMiddleware);
 app.use(webpackHotMiddleware);
 
-const staticFile = path.join(__dirname, '../', '../', 'public');
+const staticFile = path.join(__dirname, '../', 'build-dev');
 
 app.use(express.static(staticFile));
 
