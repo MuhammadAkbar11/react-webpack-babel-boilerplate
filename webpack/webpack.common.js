@@ -7,12 +7,13 @@ const HOT = process.env.HOT;
 
 module.exports = {
   entry: {
-    index: HOT
-      ? [
-          path.resolve(__dirname, '../', 'src/index.js'),
-          'webpack-hot-middleware/client',
-        ]
-      : path.resolve(__dirname, '../', 'src/index.js'),
+    index:
+      HOT === 'true'
+        ? [
+            path.resolve(__dirname, '../', 'src/index.js'),
+            'webpack-hot-middleware/client',
+          ]
+        : path.resolve(__dirname, '../', 'src/index.js'),
   },
   resolve: {
     extensions: ['.css', '.js', '.jsx', '.json'],
@@ -20,7 +21,7 @@ module.exports = {
       assets: path.resolve(__dirname, 'src/assets'),
       '@': path.resolve(__dirname, '..', 'src'),
       '@app': path.resolve(__dirname, '..', 'src/app'),
-      '@containers': path.resolve(__dirname, '..', 'src/app/containers'),
+      '@pages': path.resolve(__dirname, '..', 'src/app/pages'),
       '@components': path.resolve(__dirname, '..', 'src/app/components'),
     },
   },
@@ -61,7 +62,7 @@ module.exports = {
         exclude: /node_modules/,
         include: path.resolve(__dirname, '..', 'src'),
         use: [
-          process.env.NODE_ENV !== 'dev'
+          process.env.NODE_ENV !== 'development'
             ? MiniCssExtractPlugin.loader
             : 'style-loader',
           {
@@ -82,7 +83,7 @@ module.exports = {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
-          process.env.NODE_ENV !== 'dev'
+          process.env.NODE_ENV !== 'development'
             ? MiniCssExtractPlugin.loader
             : 'style-loader',
           {
@@ -101,17 +102,11 @@ module.exports = {
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[hash].[ext]',
-            context: 'src',
-          },
-        },
+        type: 'asset/resource',
       },
       {
         test: /\.(eot|gif|otf|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: ['url-loader?limit=100000'],
+        type: 'asset/resource',
       },
     ],
   },
@@ -119,7 +114,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'React, Webpack and Babel Boilerplate',
-      template: path.resolve(__dirname, '..', 'src', 'index.html'),
+      template: path.resolve(__dirname, '..', 'public', 'index.html'),
       filename: 'index.html',
       inject: 'body',
     }),
