@@ -1,5 +1,16 @@
 require('@babel/register');
+const dotenv = require('dotenv');
+const path = require('path');
 
-process.env.NODE_ENV === 'dev'
+let envFile = '.env';
+if (process.argv[2] === '--dev') {
+  envFile = '.env.dev';
+}
+
+dotenv.config({
+  path: path.join(__dirname, '..', envFile),
+});
+
+process.env.NODE_ENV === 'development'
   ? require('./server.dev')
   : require('./server.prod');
