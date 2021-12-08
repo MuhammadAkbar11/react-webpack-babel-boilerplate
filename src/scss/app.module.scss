@@ -1,4 +1,4 @@
-$text-color: #ffd562;
+$text-color: #3b67f7;
 
 .app {
   height: 100vh;
@@ -9,8 +9,8 @@ $text-color: #ffd562;
   justify-content: center;
   align-items: center;
   line-height: 3rem;
-  background-color: #023d35;
-  font-family: 'Poppins', monospace;
+  background-color: hsl(0, 0%, 10%);
+  font-family: Arial, Helvetica, sans-serif;
 
   a {
     text-decoration: none;
@@ -26,5 +26,5 @@ $text-color: #ffd562;
 .subtitle {
   font-weight: 500;
   font-size: 1.9rem;
-  color: darken($text-color, $amount: 10);
+  color: lighten($text-color, $amount: 10);
 }
