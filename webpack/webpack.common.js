@@ -117,6 +117,7 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, '../public/images/'),
+          noErrorOnMissing: true,
           to: 'images',
         },
         {
