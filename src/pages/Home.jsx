@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../scss/app.module.scss';
+import styles from '../scss/app.module.scss';
 // import Title from '@components/Title';
 // import SubTitle from '@components/SubTitle';
 
