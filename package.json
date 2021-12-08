@@ -14,10 +14,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "nodemon src/server/server.main.js --dev",
+    "dev": "nodemon server/server.main.js --dev",
     "prod": "yarn build:prod & yarn start:prod",
-    "start:prod": "export NODE_ENV=prod && nodemon  src/server/server.main.js",
-    "build:prod": "webpack --config webpack/webpack.config.js --env.env=prod --colors"
+    "start:prod": "nodemon  src/server/server.main.js",
+    "build:prod": "webpack --config webpack/webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -32,6 +32,7 @@
     "babel-plugin-macros": "^3.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^5.1.2",
     "eslint": "^7.22.0",
     "eslint-config-airbnb": "18.2.1",

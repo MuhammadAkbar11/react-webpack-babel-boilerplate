@@ -2,6 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const HOT = process.env.HOT;
 
@@ -112,6 +113,22 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../public/images/'),
+          to: 'images',
+        },
+        {
+          from: path.resolve(__dirname, '../public/logo/'),
+          to: 'logo',
+        },
+        {
+          from: path.resolve(__dirname, '../public/favicon.ico'),
+          to: '[name].ico',
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       title: 'React, Webpack and Babel Boilerplate',
       template: path.resolve(__dirname, '..', 'public', 'index.html'),
