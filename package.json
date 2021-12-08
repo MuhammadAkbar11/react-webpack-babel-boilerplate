@@ -14,7 +14,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "export NODE_ENV=dev HOT=true && nodemon src/server/server.main.js ",
+    "start": "nodemon src/server/server.main.js --dev",
     "prod": "yarn build:prod & yarn start:prod",
     "start:prod": "export NODE_ENV=prod && nodemon  src/server/server.main.js",
     "build:prod": "webpack --config webpack/webpack.config.js --env.env=prod --colors"
@@ -68,6 +68,7 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
